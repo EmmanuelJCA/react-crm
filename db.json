@@ -1,13 +1,6 @@
 {
   "customers": [
     {
-      "id": 1,
-      "name": "Juan",
-      "phone": 102013313,
-      "email": "juan@juan.com",
-      "company": "Codigo Con Juan"
-    },
-    {
       "id": 2,
       "name": "Karen",
       "phone": 138198313,

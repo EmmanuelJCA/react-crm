@@ -39,3 +39,14 @@ export async function updateCustomer(id, data) {
         console.log(error)
     }
 }
+
+export async function deleteCustomer(id) {
+    try {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/${id}`, {
+            method: 'DELETE',
+        })
+        await response.json()
+    } catch (error) {
+        console.log(error)
+    }
+}

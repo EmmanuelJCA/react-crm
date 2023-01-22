@@ -1,10 +1,18 @@
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useSubmit, Form, redirect } from "react-router-dom"
+import { deleteCustomer } from "../api/customers"
+import Swal from "sweetalert2"
 
-function Customer({customer}) {
+export async function action({ params }) {
+    await deleteCustomer(params.customerId)
+    return redirect('/')
+}
+
+function Customer({ customer }) {
 
     const navigate = useNavigate()
+    const submit = useSubmit()
 
-    const {name, company, email, phone, id} = customer
+    const { name, company, email, phone, id } = customer
     return (
         <tr className="border-b ">
             <td className="p-6 space-y-2">
@@ -19,17 +27,42 @@ function Customer({customer}) {
                 <button
                     type="button"
                     className="text-blue-600 hover:text-blue-700 uppercase font-bold text-xs"
-                    onClick= {() => navigate(`/customers/${id}/edit`) }
+                    onClick={() => navigate(`/customers/${id}/edit`)}
                 >
                     Editar
                 </button>
 
-                <button
-                    type="button"
-                    className="text-red-600 hover:text-red-700 uppercase font-bold text-xs"
+                <Form
+                    method='post'
+                    action={`/customers/${id}/destroy`}
+                    onSubmit={e => {
+                        e.preventDefault()
+                        Swal.fire({
+                            title: 'Deseas eliminar este registro?',
+                            icon: 'warning',
+                            showCancelButton: true,
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#d33',
+                            confirmButtonText: 'Si, Eliminar!'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                submit(null, { method: "post", action: `/customers/${id}/destroy` })
+                                Swal.fire(
+                                    'Deleted!',
+                                    'Your file has been deleted.',
+                                    'success'
+                                )
+                            }
+                        })
+                    }}
                 >
-                    Eliminar
-                </button>
+                    <button
+                        type="submit"
+                        className="text-red-600 hover:text-red-700 uppercase font-bold text-xs"
+                    >
+                        Eliminar
+                    </button>
+                </Form>
             </td>
         </tr>
     )
