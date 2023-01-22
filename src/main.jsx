@@ -4,7 +4,7 @@ import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Layout from './components/Layout'
 import Index, {loader as customersLoaders} from './pages/Index'
-import NewClient from './pages/NewClient'
+import NewCustomer, {action as newCustomerAction} from './pages/NewCustomer'
 
 const router = createBrowserRouter([
   {
@@ -17,8 +17,9 @@ const router = createBrowserRouter([
         loader: customersLoaders
       },
       {
-        path: '/clients/new',
-        element: <NewClient />
+        path: '/customers/new',
+        element: <NewCustomer />,
+        action: newCustomerAction
       }
     ]
   }

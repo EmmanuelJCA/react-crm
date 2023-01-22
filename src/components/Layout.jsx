@@ -15,8 +15,8 @@ function Layout() {
                         to="/">Clientes</Link>
 
                     <Link 
-                        className={` ${location.pathname === '/clients/new' ? 'text-blue-300' : 'text-white'} text-2xl block mt-2 hover:text-blue-300`} 
-                        to="/clients/new">Nuevo Cliente</Link>
+                        className={` ${location.pathname === '/customers/new' ? 'text-blue-300' : 'text-white'} text-2xl block mt-2 hover:text-blue-300`} 
+                        to="/customers/new">Nuevo Cliente</Link>
                 </nav>
             </aside>
             <main className="md:w-3/4 p-10 md:h-screen overflow-scroll">
