@@ -4,27 +4,27 @@ const CustomerForm = ({cliente}) => {
             <div className="mb-4">
                 <label
                     className="text-gray-800"
-                    htmlFor="nombre"
+                    htmlFor="name"
                 >Nombre:</label>
                 <input 
-                    id="nombre"
+                    id="name"
                     type="text"
                     className="mt-2 block w-full p-3 bg-gray-50"
                     placeholder="Nombre del Cliente"
-                    name="nombre"
+                    name="name"
                 />
             </div>
             <div className="mb-4">
                 <label
                     className="text-gray-800"
-                    htmlFor="empresa"
+                    htmlFor="company"
                 >Empresa:</label>
                 <input 
-                    id="empresa"
+                    id="company"
                     type="text"
                     className="mt-2 block w-full p-3 bg-gray-50"
                     placeholder="Empresa del Cliente"
-                    name="empresa"
+                    name="company"
                 />
             </div>
 
@@ -45,29 +45,29 @@ const CustomerForm = ({cliente}) => {
             <div className="mb-4">
                 <label
                     className="text-gray-800"
-                    htmlFor="telefono"
+                    htmlFor="phone"
                 >Teléfono:</label>
                 <input 
-                    id="telefono"
+                    id="phone"
                     type="tel"
                     className="mt-2 block w-full p-3 bg-gray-50"
                     placeholder="Teléfono del Cliente"
-                    name="telefono"
+                    name="phone"
                 />
             </div>
 
             <div className="mb-4">
                 <label
                     className="text-gray-800"
-                    htmlFor="notas"
+                    htmlFor="notes"
                 >Notas:</label>
                 <textarea
                     as="textarea"
-                    id="notas"
+                    id="notes"
                     type="text"
                     className="mt-2 block w-full p-3 bg-gray-50 h-40 align-self"
                     placeholder="Notas del Cliente"
-                    name="notas"
+                    name="notes"
                 />
             </div>
         </>

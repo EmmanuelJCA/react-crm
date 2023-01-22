@@ -4,7 +4,8 @@ import Customer from "../components/Customer";
 
 export function loader() {
    const customers = getCustomers()
-   return customers
+      // Error Boundries son componentes de react que obtienen los errores en cualquier parte del componente, tambien muestran los errores
+      return customers
 }
 
 function Index() {

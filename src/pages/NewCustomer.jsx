@@ -1,6 +1,7 @@
-import { useNavigate, Form, useActionData } from "react-router-dom"
+import { useNavigate, Form, useActionData, redirect } from "react-router-dom"
 import Swal from "sweetalert2"
 import CustomerForm from "../components/CustomerForm"
+import { addCustomer } from "../api/customers"
 
 export async function action({request}) {
     const formData = await request.formData()
@@ -19,9 +20,9 @@ export async function action({request}) {
         })
     }
     
-    let regex = new RegExp("([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\"\(\[\]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\[[\t -Z^-~]*])");
+    let regex = new RegExp("([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\"\(\[\]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\[[\t -Z^-~]*])")
 
-    if(regex.test(email)) {
+    if(!regex.test(email)) {
         return Swal.fire({
             title: 'Email no valido',
             icon: 'error',
@@ -29,6 +30,10 @@ export async function action({request}) {
             timer: 1500
         })
     }
+
+    await addCustomer(customerData)
+
+    return redirect('/')
 }
 
 function NewCustomer() {
